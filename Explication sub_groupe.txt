@@ -1,0 +1,47 @@
+L'idée pour calculer la somme ou la soustraction de deux éléments d'un groupe abélien fini. 
+
+
+Explication sur un exemple: 
+
+Soit le groupe C2+C4+C8 dont on veut effectuer une addition de deux entiers a et b. 
+a=4 et b =3 
+
+Chaque entier est traduit en un triplet car dans ce cas là on a 3 bases: 
+La base 2 
+La base 4 
+La base 8
+
+On commence par l'entier a:
+
+La première coordonnée a0 est modulo la première base c'est à dire modulo 2. a0=a%2; 
+
+La deuxième coordonnée a1 est divisé par le modulo précédent c'est à dire divisée par 2, et modulo sa base c'est à dire modulo 4.  a1=(a/2)%4;
+
+La troisième coordonnée et la dernière est divisé par le produit des modulos précédents. c'est à dire modulo 2*4=8. a2=a/8;
+
+Pour l'entier b on fait la même chose.  b0=b%2; b1=(b/2)%4; b2=b/8;
+
+
+L'étape prochaine et de faire la somme de chaque coordonnée modulo la base courante.
+a0=(a0+b0)%2;
+a1=(a1+b1)%4;
+a2=(a2+b2)%8; 
+
+Et enfin, exprimer l'entier a à partir de ces nouvelles coordonnées. 
+a= a0+2*a1+8*a2; Attention on multiplie par l'entier dont on a divisé précédemment. 
+
+
+Pour soustraire deux entiers d'un groupe abélien finis on fait la même chose. Par contre au lien d'addition chaque coordonnée on soustrait de la façon suivante: 
+a0=(a0+2-b0)%2;
+a1=(a1+4-b1)%4;
+a2=(a2+8-b2)%8;
+
+
+Autre exemple dans la base 10. 
+Imaginons que nous voulons exprimer chaque coordonnée du chiffre 123. 
+On a: 
+
+3= 123%10
+2= 123/10 %10
+1= 123/100
+
